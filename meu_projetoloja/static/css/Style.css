@@ -1,0 +1,243 @@
+/* Definir padding-left e padding-right para o conteúdo principal */
+.main-content, .card-games, .sinopse {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+/* Estilizar scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Estilizar parte da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #1d1d1d;
+}
+
+/* Estilizar o polegar da barra (a parte que se move) */
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 10px;
+  border: 3px solid #252525;
+}
+
+body {
+  color: white;
+  background-color: #202020;
+}
+
+/* Estilização do carousel */
+.carousel-caption {
+  background-color: rgba(128, 128, 128, 0.548);
+}
+
+.carousel-caption h5 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption p {
+  color: #ddd;
+  font-size: 18px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.seu-elemento {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Id títulos */
+.id-titulo {
+  padding-left: 20px;
+}
+
+.genero-game {
+  font-size: small;
+  padding-left: 30px;
+}
+
+/* Estilo do modal */
+.modal-content {
+  background-color: #1a1a1d;
+  color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  border-bottom: none;
+  background-color: #333;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.btn-close {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.modal-body {
+  padding: 20px;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Botões */
+.btn-primary {
+  background-color: #c9b037; /* Cor para "Comprar" */
+  border: none;
+  color: #1c1c1c;
+}
+
+.btn-primary:hover {
+  background-color: #e0c067; /* Cor de hover para "Comprar" */
+  color: #000;
+}
+
+.btn-secondary {
+  background-color: #ff4d4d; /* Cor para "Cancelar" */
+  border: none;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #ff1a1a; /* Cor de hover para "Cancelar" */
+}
+
+/* Select e Radios */
+.form-select,
+.form-check-input {
+  background-color: #333;
+  color: #ffffff;
+  border: 1px solid #4a4a4a;
+}
+
+.form-select option {
+  background-color: #1a1a1d;
+  color: #ffffff;
+}
+
+/* Legenda */
+legend {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+/* Labels */
+.form-label,
+.form-check-label {
+  color: #ffffff;
+}
+
+/* Estilo dos cards */
+.card-games {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card-games img {
+  transition: transform 0.3s ease;
+}
+
+.card-games img:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  background-color: #1b1b1b;
+  color: #b0b0b0;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
+.footer-links {
+  margin: 10px 0;
+}
+
+.footer-links a {
+  color: #b0b0b0;
+  text-decoration: none;
+  padding: 0 10px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-links a:not(:last-child)::after {
+  content: "|";
+  padding-left: 10px;
+  color: #b0b0b0;
+}
+
+footer a {
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #00b2ff;
+}
+
+.navbar {
+  background-color: #1c1c1c;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav .nav-link {
+  color: #f8f9fa;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #c9b037;
+}
+
+.id-titulo h1 {
+  font-family: 'Cinzel', serif;
+  color: #f8f9fa;
+}
+
+.sinopse p,
+.sinopse ul {
+  font-family: 'Lora', serif;
+  line-height: 1.6;
+  color: #eaeaea;
+}
+
+.card-games .card1,
+.card2,
+.card3 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-games .card1:hover,
+.card2:hover,
+.card3:hover,
+.card4:hover,
+.card5:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.card-games .card-title {
+  font-family: 'Cinzel', serif;
+  color: #c9b037;
+}

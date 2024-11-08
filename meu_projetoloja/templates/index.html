@@ -1,0 +1,263 @@
+{% load static %} <!-- Carregar arquivos estáticos -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap 5.3.3 CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- CSS customizado -->
+  <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+
+  <title>Bloodborne PC</title>
+</head>
+
+<body>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Loja de Games</a>
+      <input class="form-control" type="text" placeholder="Buscar Jogos..." aria-label="default input example">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Jogos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Carrinho</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Perfil</a>
+          </li>
+  
+          <!-- Verificação de login -->
+          {% if user.is_authenticated %}
+            <!-- Se o usuário estiver logado, exibe o botão de logout -->
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+            </form>
+          {% else %}
+            <!-- Se o usuário não estiver logado, exibe o link de login -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+  <div class="id-titulo"><br>
+    <h1>Bloodborne</h1>
+    <p class="genero-game">Souls-Like, Terror, Fantasy, RPG.</p>
+  </div>
+
+  <!--Carrossel-->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'img/Carousel img/bloodborne img 4.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Explore Novas Mecânicas!</h5>
+          <p>Novas Mecânicas de Parry, Recuperação de Vida e Combate.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/Carousel img/bloodborne img 2.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Ambientação de Cair o Queixo!</h5>
+          <p>Ambientado Como Um Jogo De Terror Cósmico.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/Carousel img/bloodborne img 3.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Mundo com uma História Empolgante!</h5>
+          <p>Será Que Você é Capaz de Chegar ao Fim?</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <br>
+
+  <div class="main-content">
+    <!-- Botão modal -->
+    <button class="btn btn-primary" 
+    {% if user.is_authenticated %}
+        data-bs-toggle="modal" 
+        data-bs-target="#staticBackdrop"
+    {% else %}
+        disabled
+    {% endif %}
+>
+    Comprar
+</button>
+
+</button>
+<button class="btn btn-primary" type="submit">Adicionar ao Carrinho</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Pagamento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulário de compra -->
+        <form>
+          <!-- Presente? (radiobutton) -->
+          <label for="gift">Presente?</label><br>
+          <input type="radio" id="sim" name="gift" value="sim">
+          <label for="sim">Sim</label><br>
+          <input type="radio" id="nao" name="gift" value="nao">
+          <label for="nao">Não</label><br><br>
+
+          <!-- Versão do Jogo -->
+          <label for="game-version">Escolha a Versão do Jogo:</label>
+          <select id="game-version" class="form-select">
+            <option value="selecione">Selecione...</option>
+            <option value="standard">Standard</option>
+            <option value="dlc">DLC (The Old Hunters)</option>
+          </select><br><br>
+
+          <!-- Opção de Pagamento -->
+          <label for="payment-option">Opção de Pagamento:</label>
+          <select id="payment-option" class="form-select">
+            <option value="selecione">Selecione...</option>
+            <option value="credito">Crédito</option>
+            <option value="debito">Débito</option>
+            <option value="pix">Pix</option>
+            <option value="boleto">Boleto Bancário</option>
+          </select><br><br>
+
+          <!-- Preço -->
+          <label for="price">Preço:</label>
+          <input type="text" id="price" class="form-control" value="R$ 90,00" disabled>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="finalizePurchaseBtn">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <br><br><br>
+
+  <!--Sinopse-->
+  <div class="sinopse">
+    <h3 class="titulo-sinopse">Sinopse</h3><br>
+    <p class="sinopse-game">
+      <strong>Bloodborne</strong> é um jogo de ação e RPG desenvolvido pela FromSoftware, conhecido por sua ambientação única e jogabilidade desafiadora. Em um mundo de terror gótico, você enfrentará criaturas aterrorizantes e mistérios perturbadores enquanto busca por respostas.
+    </p>
+  </div>
+
+  <!-- Cards -->
+  <h2 class="jogos-recomendados">Jogos Recomendados</h2><br>
+<div class="card-games">
+  <div class="card1" style="width: 18rem;">
+    <a href="#">
+      <img src="{% static 'img/card-games/Dark_Souls_1.png' %}" class="card-img-top cursor-pointer" alt="...">
+    </a>
+    <div class="card-body">
+      <br>
+      <h5 class="card-title">48.99 R$</h5>
+    </div>
+  </div>
+
+  <div class="card2" style="width: 18rem;">
+    <a href="#">
+      <img src="{% static 'img/card-games/dark souls 2.avif' %}" class="card-img-top cursor-pointer" alt="...">
+    </a>
+    <div class="card-body">
+      <br>
+      <h5 class="card-title">80.00 R$</h5>
+    </div>
+  </div>
+
+  <div class="card3" style="width: 18rem;">
+    <a href="#">
+      <img src="{% static 'img/card-games/dark souls 3.webp' %}" class="card-img-top cursor-pointer" alt="...">
+    </a>
+    <div class="card-body">
+      <br>
+      <h5 class="card-title">130.00 R$</h5>
+    </div>
+  </div>
+
+  <div class="card4" style="width: 18rem;">
+    <a href="#">
+      <img src="{% static 'img/card-games/venom snake.webp' %}" class="card-img-top cursor-pointer" alt="...">
+    </a>
+    <div class="card-body">
+      <br>
+      <h5 class="card-title">Free</h5>
+    </div>
+  </div>
+
+  <div class="card5" style="width: 18rem;">
+    <a href="#">
+      <img src="{% static 'img/card-games/demon souls.jpg' %}" class="card-img-top cursor-pointer" alt="...">
+    </a>
+    <div class="card-body">
+      <br>
+      <h5 class="card-title">180.00 R$</h5>
+    </div>
+  </div>
+</div><br><br><br>
+
+
+  <!-- Bootstrap 5.3.3 JS and Popper via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <!-- JS customizado -->
+  <script src="{% static 'js/Script.js' %}"></script>
+</body>
+
+<footer>
+  <div class="footer-content">
+    <p>Software</p>
+    <p>&copy; 2024 Corporation. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</html>

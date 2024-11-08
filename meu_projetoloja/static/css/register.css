@@ -1,0 +1,88 @@
+/* Corpo da página */
+body {
+    background-color: #202020;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Container principal */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Título */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #c9b037;
+}
+
+/* Campos de input */
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+/* Inputs */
+input[type="text"], input[type="password"], input[type="email"] {
+    background-color: #333;
+    border: 1px solid #555;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+/* Botão de envio */
+button[type="submit"] {
+    background-color: #c9b037; /* Cor principal */
+    border: none;
+    padding: 10px 20px;
+    color: #1c1c1c;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Botão de envio ao passar o mouse */
+button[type="submit"]:hover {
+    background-color: #e0c067;
+    color: #000;
+}
+
+/* Link para Login */
+p.text-center {
+    text-align: center;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+p.text-center a {
+    color: #c9b037;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p.text-center a:hover {
+    color: #f8f9fa;
+}
+
+/* Campo de erro (se necessário) */
+.field-error {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Pequenos ajustes de layout */
+.form-check-input {
+    margin-right: 5px;
+}
